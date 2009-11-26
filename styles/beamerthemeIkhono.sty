@@ -1,0 +1,29 @@
+% Copyright 2008 by Thomas Weibel
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+
+\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+\ProcessOptionsBeamer
+
+\usecolortheme{whale}
+%\usecolortheme{ikhono}
+\usecolortheme{orchid}
+\useinnertheme{rectangles}
+\useoutertheme{ikhono}
+
+\ifbeamer@secheader\else\setbeamertemplate{headline}[default]\fi
+
+\setbeamerfont{block title}{size={}}
+
+\mode
+<all>
+
+
