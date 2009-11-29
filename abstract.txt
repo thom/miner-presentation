@@ -1,0 +1,24 @@
+Presentation Abstract: Mining software repositories for intelligent
+software maintenance
+
+The aim of this presentation is to demonstrate the efficacy of
+software repository mining in improving software maintenance,
+specifically preventive maintenance. The first part of the talk will
+introduce the topic of software version mining and discuss its
+application in addressing a number of maintenance challenges such as
+debugging, impact analysis, predicting faults, understanding software
+evolution and so on. The second part of the talk will dwell on the
+software repository mining framework that we have built. We wil show
+the novelty in our approach and how it can help improve software
+maintainability. The discussion is illustrated with a variety of real
+examples.
+
+
+Short biography:
+
+Thomas Weibel is an InStep intern at SETLabs. He is doing his Master's
+in Computer Science at ETH Zurich focusing on software engineering. He
+has been programming software for more than 10 years and has nearly 3
+years of industrial software development experience. His current
+research interests include mining software repositories, source code
+evolution and Design by Contract.
