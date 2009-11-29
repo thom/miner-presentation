@@ -101,20 +101,69 @@
   TODO
 }
 
-\begin{frame}{Version Control Systems}
-  TODO
+\begin{frame}{Version Control}
+  \begin{center}
+    \includegraphics[scale=0.35]{figures/vcs}
+  \end{center}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item Management of changes to computer files in a repository
+  \item Changes identified by a number or letter code (``revision'')
+  \item Each revision associated with timestamp and person
+    making the change
+  \item Working copy: Local copy of files from a repository
+  \end{itemize}
 \end{frame}
 
 \note{
-  TODO
+  \begin{itemize}
+  \item Version control is the management of changes to documents,
+    programs, and other information stored as computer files. It is
+    most commonly used in software development, where a team of people
+    may be changing the same files.
+  \item Changes are usually identified by a number or letter code,
+    termed the ``revision''. For example, an initial set of files is
+    ``revision 1''. When the first change is made, the resulting set
+    is ``revision 2'', and so on.
+  \item Each revision is associated with a timestamp and the person
+    making the change.
+  \item The working copy is the local copy of files from a repository,
+    at a specific time or revision.
+  \end{itemize}
 }
 
-\begin{frame}{Git}
-  TODO
+\begin{frame}[fragile]{Commits and Change Sets}
+  \begin{itemize}
+  \item Commit: Writing changes to the working copy into the
+    repository
+  \item Change set: Set of changes made in a single commit
+  \end{itemize}
+
+  \vspace{\stretch{1}}
+
+\begin{verbatim}
+commit 3d2d827f5ca5e32816194119d5c980c7e04474a6
+Author: Michael S. Tsirkin <mst@redhat.com>
+Date:   Mon Sep 21 17:03:51 2009 -0700
+
+    mm: move use_mm/unuse_mm from aio.c to mm/
+
+M       fs/aio.c
+A       include/linux/mmu_context.h
+M       mm/Makefile
+A       mm/mmu_context.c
+\end{verbatim}
 \end{frame}
 
 \note{
-  TODO
+  \begin{itemize}
+  \item A commit occurs when a copy of the changes made to the working
+    copy is written or merged into the repository.
+  \item On version control systems with atomic multi-change commits, a
+    change set identifies the set of changes made in a single commit.
+  \end{itemize}
 }
 
 \begin{frame}{Software Version Mining}
@@ -218,6 +267,31 @@
   TODO
 }
 
+\begin{frame}{Git}
+  \begin{itemize}
+  \item Free distributed version control system
+  \item Initially designed and developed for Linux kernel development
+  \item Every Git working directory is a full-fledged repository with
+    complete history and full revision tracking capabilities, not
+    dependent on network access or a central server.
+  \item Repositories of other version control systems like CVS or
+    Subversion can easily be converted into Git repositories
+  \end{itemize}
+\end{frame}
+
+\note{
+  \begin{itemize}
+  \item Git is a free distributed version control system.
+  \item Git was initially designed and developed by Linus Torvalds for
+    Linux kernel development.
+  \item Every Git working directory is a full-fledged repository with
+    complete history and full revision tracking capabilities, not
+    dependent on network access or a central server.
+  \item Repositories of other version control systems like CVS or
+    Subversion can easily be converted into Git repositories
+  \end{itemize}
+}
+
 
 \section{Novelty}
 
@@ -237,10 +311,16 @@
   TODO
 }
 
-\begin{frame}{Case Studies}
+\begin{frame}{Experiments}
   \begin{itemize}
-  \item Wine
   \item Linux 2.6
+    \begin{itemize}
+    \item TODO
+    \end{itemize}
+  \item Wine
+    \begin{itemize}
+    \item TODO
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -375,32 +455,19 @@
 }
 
 \begin{frame}{References}
-  \begin{thebibliography}{10}
-  % Articles
-    \beamertemplatearticlebibitems
-    
-  \bibitem{zpl}
-    B. Chamberlain et al., {\em ZPL: A Machine Independent Language
-      for Parallel Computers},
-    \url{http://www.cs.washington.edu/research/zpl/papers/data/Chamberlain00ZPL.pdf}
-  \end{thebibliography}
+  TODO
 \end{frame}
 
 \note{
-  Those are the are the references I used in my presentation.
+  TODO
 }
 
-\begin{frame}{Discussion}
-  \vspace{\stretch{1}}
-
-  \begin{center}
-    \includegraphics[width=\textwidth]{figures/dilbert-turing-test}
-  \end{center}
-
-  \vspace{\stretch{1}}
+\begin{frame}{Conclusion}
+  TODO
 \end{frame}
 
 \note{
+  TODO
 }
 
 \end{document}
