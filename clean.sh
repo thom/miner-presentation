@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -f *.pdf *.log *.out *.aux *.vrb
+rm -f *.pdf *.log *.out *.aux *.vrb rubtmp*

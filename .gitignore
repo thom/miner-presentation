@@ -1,8 +1,8 @@
-*.pdf
-*.aux
-*.log
-*.nav
-*.out
-*.snm
-*.toc
-*.vrb
+./*.pdf
+./*.aux
+./*.log
+./*.nav
+./*.out
+./*.snm
+./*.toc
+./*.vrb
