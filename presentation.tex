@@ -363,7 +363,6 @@
   \item Predicting Faults
   \item Improve Bug Finding Techniques
   \item Predicting Changes
-  \item Code Ownership
   \item Traceability Links
   \item Understanding Software Evolution
   \end{itemize}
@@ -379,42 +378,113 @@
 }
 
 \begin{frame}{Predicting Faults}
-  TODO
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{predicting-faults}
+    S. Kim, T. Zimmermann et al., {\em Predicting Faults from Cached
+      History}
+  \end{thebibliography}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item Assumption: faults do not occur in isolation, but rather in
+    bursts of several related faults
+  \item Identifying bug fixes by mining commit messages: Searching for
+    keywords such as ``Fixed'' or ``Bug'' and references to bug
+    reports like ``42''
+  \item Cache locations that are likely to have faults
+  \item By consulting the cache at the moment a fault is fixed, a
+    developer can detect likely fault-prone locations
+  \end{itemize}
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item The basic assumption is that faults do not occur in isolation,
+    but rather in bursts of several related faults.
+  \item Therefore, one can cache locations that are likely to have
+    faults: starting from the location of a known (fixed) fault, cache
+    the location itself, any locations changed together with the
+    fault, recently added locations, and recently changed locations.
+  \item By consulting the cache at the moment a fault is fixed, a
+    developer can detect likely fault-prone locations. This is useful
+    for prioritizing verification and validation resources on the most
+    fault prone files or entities.
+  \item Identifying bug fixes by mining change log messages: Searching
+    for keywords such as ``Fixed'' or ``Bug'' and references to bug
+    reports like ``42''
+  \end{itemize}
 }
 
 \begin{frame}{Improve Bug Finding Techniques}
-  TODO
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{improve-bug-finding-techniques}
+    C. Williams, J. Hollingsworth, {\em Automatic Mining of Source
+      Code Repositories to Improve Bug Finding Techniques}
+  \end{thebibliography}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item TODO
+  \end{itemize}
 \end{frame}
 
 \note{
 }
 
 \begin{frame}{Predicting Changes}
-  TODO
-\end{frame}
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{predicting-source-code-changes}
+    A. Ying, G. Murphy et al., {\em Predicting Source Code Changes by
+      Mining Change History}
+  \end{thebibliography}
 
-\note{
-}
+  \vspace{\stretch{1}}
 
-\begin{frame}{Code Ownership}
-  TODO
+  \begin{itemize}
+  \item TODO
+  \end{itemize}
 \end{frame}
 
 \note{
 }
 
 \begin{frame}{Traceability Links}
-  TODO
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{traceability-links}
+    H. Kadgi et al., {\em Mining Software Repositories for
+      Traceability Link}
+  \end{thebibliography}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item TODO
+  \end{itemize}
 \end{frame}
 
 \note{
 }
 
 \begin{frame}{Understanding Software Evolution}
-  TODO
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{software-evolution}
+    Y. Cai, {\em Assessing the Effectiveness of Software
+      Modularization Techniques through the Dynamics of Software
+      Evolution}
+  \end{thebibliography}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item TODO
+  \end{itemize}
 \end{frame}
 
 \note{
@@ -490,6 +560,22 @@
   \begin{center}
     \includegraphics[width=0.95\textwidth]{figures/initialize-database}
   \end{center}
+\end{frame}
+
+\note{
+}
+
+\begin{frame}{Preventing Maintenance}
+  Our framework can help with solving all mentioned maintenance
+  challenges:
+
+  \begin{itemize}
+  \item Predicting Faults
+  \item Improve Bug Finding Techniques
+  \item Predicting Changes
+  \item Traceability Links
+  \item Understanding Software Evolution
+  \end{itemize}
 \end{frame}
 
 \note{
