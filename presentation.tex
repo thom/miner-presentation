@@ -97,12 +97,22 @@
   \item Improving software maintenance through software repository
     mining
   \item Framework for preventive maintenance
-  \item Metrics for localization
+  \item Novelty: Metrics for localization
   \item Study of Open Source projects
   \end{itemize}
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item First I will introduce change management with version control
+    systems.
+  \item Then I will show you how you can improve software maintenance
+    through software repository mining
+  \item After this, I'm going present you a framework for preventive
+    maintenance I developed.
+  \item As a novelty, we devised a metrics for localization.
+  \item And did a study of Open Source projects.
+  \end{itemize}
 }
 
 
@@ -143,6 +153,8 @@
     is ``revision 2'', and so on.
   \item Each revision is associated with a timestamp and the person
     making the change.
+  \item Examples of version control systems are CVS, Subversion or
+    Git.
   \end{itemize}
 }
 
@@ -178,6 +190,7 @@
     copy is written or merged into the repository.
   \item On version control systems with atomic multi-change commits, a
     change set identifies the set of changes made in a single commit.
+  \item Explain commit!
   \end{itemize}
 }
 
@@ -230,6 +243,13 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item First we extract version history from the version control
+    repository.
+  \item This gives us information about who changes what, why and when.
+  \item This information is written into a version history database
+    for easier mining.
+  \end{itemize}
 }
 
 \subsection{Frequent Item Set Mining}
@@ -239,9 +259,10 @@
     \begin{column}{0.5\textwidth}
       \begin{itemize}
       \item Popular method for market basket analysis
-      \item Identify sets of products frequently bought together
-      \item Our framework applies frequent item set mining to the
-        version history of software repositories
+      \item Identify sets of products frequently bought together: Beer
+        and diapers
+      \item Framework applies frequent item set mining to the version
+        history of software repositories
       \item Identify which code files have been frequently changed
         together
       \end{itemize}
@@ -262,7 +283,12 @@
     finding regularities in the shopping behaviour of customers of
     supermarkets, mail-order companies, online-shops and so forth.
   \item In particular, it tries to identify sets of products that are
-    frequently bought together.
+    frequently bought together:
+  \item A famous example was the discovery that people who buy diapers
+    also frequently buy beer. Those are probably exhausted fathers of
+    small children.
+  \item Therefore nowadays one finds frequently beer close to diapers
+    - and of course also chips close to beer - in supermarkets.
   \item In our framework, we apply frequent item set mining to the
     version history of software repositories.
   \item The goal is to find out, which code files have been frequently
@@ -303,15 +329,23 @@
 
 \begin{frame}{Frequent Item Set Mining: Definitions}
   \begin{itemize}
-  \item The \alert{transaction database} contains all change sets
-  \item Members of transactions are called \alert{items}
-  \item An \alert{item set} is a subset of possible items
+  \item \alert{Transaction database} contains all change sets
+  \item Members of transactions are \alert{items}
+  \item \alert{Item set} is a subset of possible items
   \item \alert{Support} of an item set $i$: sup($i$) $:=$ number of
-    transactions $t$ that support (i.e. contain) $i$
+    transactions $t$ that contain $i$
   \end{itemize}
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item The \alert{transaction database} contains all transactions of
+    the version control system.
+  \item Members of transactions are called \alert{items}.
+  \item And and \alert{item set} is a subset of possible items
+  \item The \alert{support} of an item set $i$ is the number of
+    transactions $t$ that support - this means contain - $i$.
+  \end{itemize}
 }
 
 \begin{frame}{Frequent Item Set Mining: Association Rules}
@@ -337,6 +371,20 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item Association rule mining gives options to finish the sentence
+    ``Customers who bought this item also bought...''
+  \item For example ``\alert{If} a customer buys \alert{bread} and
+    \alert{wine}, \alert{then} she will probably also buy
+    \alert{cheese}''.
+  \item The problem is decomposed into two subproblems:
+    \begin{itemize}
+    \item Finding frequent item sets with minimum support
+    \item Generate association rules with minimal confidence
+    \end{itemize}
+  \item Instead of going into details about confidences, I will give
+    you an example for frequent item set mining and association rules.
+  \end{itemize}
 }
 
 \begin{frame}{Frequent Item Set Mining: Example}
@@ -354,17 +402,26 @@
 \end{frame}
 
 \note{
+  Show example on the whiteboard
 }
 
 \subsection{Maintenance Challenges}
 
 \begin{frame}{Maintenance Challenges}
   \begin{itemize}
-  \item Predicting Faults
-  \item Improve Bug Finding Techniques
-  \item Predicting Changes
-  \item Traceability Links
-  \item Understanding Software Evolution
+  \item Predicting changes
+    \begin{itemize}
+    \item Incomplete changes
+    \end{itemize}
+  \item Traceability links
+    \begin{itemize}
+    \item ``Cross-language'' changes
+    \end{itemize}
+  \item Predicting faults
+  \item Understanding software evolution
+    \begin{itemize}
+    \item Measure change localization
+    \end{itemize}
   \end{itemize}
 
   \vspace{\stretch{1}}
@@ -375,6 +432,173 @@
 \end{frame}
 
 \note{
+}
+
+\begin{frame}{Predicting Changes}
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{predicting-source-code-changes}
+    A. Ying, G. Murphy et al., {\em Predicting Source Code Changes by
+      Mining Change History}
+  \end{thebibliography}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item Determines change patterns from change history of the code
+    base
+  \item Uses association rule mining for identifying implicit
+    dependencies
+  \item Change patterns can be used to recommend potentially relevant
+    source code to a developer performing a modification task
+  \end{itemize}
+\end{frame}
+
+\note{
+  \begin{itemize}
+  \item Determines change patterns from the change history of the code
+    base. Change patterns are sets of files that were changed together
+    frequently in the past. This means, they are frequent item sets.
+  \item The method uses association rule mining for identifying
+    implicit dependencies
+  \item Change patterns can be used to recommend potentially relevant
+    source code to a developer performing a modification task
+  \end{itemize}
+}
+
+\begin{frame}{Predicting Changes: Incomplete Change}
+  \begin{itemize}
+  \item Comments in modification task report of Mozilla:
+    \begin{itemize}
+    \item 2002-06-12 14:14: Patch to gtk/nsFontMetricsGTK.cpp,
+      limiting the size of fonts to twice the display height.
+    \item 2002-06-12 14:37: Patch misses the Xlib version.
+    \item A patch was later submitted with the correct changes in the
+      X-windows font handling code in the file
+      xlib/nsFontMetricsXlib.cpp
+    \end{itemize}
+  \item gtk/nsFontMetricsGTK.cpp does not reference
+    xlib/nsFontMetricsXlib.cpp $\rightarrow$ used in different
+    configurations
+  \item Files were changed 41 times together $\rightarrow$ change
+    pattern
+  \item Changing the gtk/nsFontMetricsGTK.cpp could trigger a
+    recommendation for xlib/nsFontMetricsXlib.cpp
+  \end{itemize}
+\end{frame}
+
+\note{
+  \begin{itemize}
+  \item The Mozilla Web browser includes a Web content layout engine
+    responsible for Web pages. There was a bug that caused the
+    consumption of all available memory when a Web page with very
+    large fonts was displayed. As part of a solution for this
+    modification task, a developer added code to limit the font size
+    in the version of Mozilla that uses the gtk UI toolkit, but missed
+    a similar required change in the version that uses the UI toolkit
+    xlib. The comments in the modification task report include the
+    following:
+  \item Comments in modification task report:
+    \begin{itemize}
+    \item 2002-06-12 14:14: Patch to gtk/nsFontMetricsGTK.cpp,
+      limiting the size of fonts to twice the display height.
+    \item 2002-06-12 14:37: Patch misses the Xlib version.
+    \item A patch was later submitted with the correct changes in the
+      X-windows font handling code in the file
+      xlib/nsFontMetricsXlib.cpp
+    \end{itemize}
+  \item The source code in gtk/nsFontMetricsGTK.cpp does not reference
+    the code in xlib/nsFontMetricsXlib.cpp because the code in the gtk
+    version and the code in xlib version are used in different
+    configurations of Mozilla.
+  \item However, an analysis of the change history for Mozilla
+    indicates that these two files were changed 41 times together in
+    the development of Mozilla.
+  \item When we applied our approach to Mozilla, we extracted a change
+    pattern. Changing the gtk/nsFontMetricsGTK.cpp could trigger a
+    recommendation for the other file.
+  \end{itemize}
+}
+
+\begin{frame}{Traceability Links}
+  \begin{thebibliography}
+    \beamertemplatearticlebibitems
+  \bibitem{traceability-links}
+    H. Kadgi et al., {\em Mining Software Repositories for
+      Traceability Link}
+  \end{thebibliography}
+
+  \vspace{\stretch{1}}
+
+  \begin{itemize}
+  \item If files of difference types are co-changed with a high
+    frequency over multiple versions $\rightarrow$ potential
+    traceability link
+  \item Traceability links derived from the actual changes to files by
+    mining software repositories
+  \item Uses sequential-pattern mining to identify and analyze sets of
+    files that are committed together
+  \item Sequential-pattern mining produces ordered lists of
+    co-changing files
+  \item Ordering information can be used to infer directionality
+  \end{itemize}
+\end{frame}
+
+\note{
+  \begin{itemize}
+  \item If files of different types are co-changed with a high
+    frequency over multiple versions, then such files potentially
+    have a traceability link between them
+  \item Traceability links are derived from the actual changes to
+    files by mining software repositories
+  \item Uses sequential-pattern mining to identify and analyze sets of
+    files that are committed together. Another approach would be
+    frequent item set mining.
+  \item Sequential-pattern mining produces ordered lists of
+    co-changing files whereas frequent item set mining produces sets.
+  \item The ordering information can be used to infer directionality
+    of traceability links
+  \end{itemize}
+}
+
+\begin{frame}[containsverbatim]{Traceability Links: Example}
+  \begin{itemize}
+  \item Mining change sets in the Wine repository
+  \item Changes are tested:
+    \begin{itemize}
+    \item 
+\begin{verbatim}
+./dlls/gdiplus/graphicspath.c ->
+./dlls/gdiplus/tests/graphicspath.c
+\end{verbatim}
+    \item 
+\begin{verbatim}
+./dlls/inetmib1/main.c ->
+./dlls/inetmib1/tests/main.c
+\end{verbatim}
+    \end{itemize}
+  \item Cross language changes:
+    \begin{itemize}
+    \item
+\begin{verbatim}
+./dlls/rpcrt4/tests/server.c ->
+./dlls/rpcrt4/tests/server.idl
+\end{verbatim}
+    \item
+\begin{verbatim}
+./dlls/dxgi/dxgi_private.h ->
+./include/wine/winedxgi.idl
+\end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\note{
+  \begin{itemize}
+  \item Mining change sets in the Wine repository
+  \item Changes are tested
+  \item Identifies cross language changes
+  \end{itemize}
 }
 
 \begin{frame}{Predicting Faults}
@@ -417,79 +641,6 @@
   \end{itemize}
 }
 
-\begin{frame}{Improve Bug Finding Techniques}
-  \begin{thebibliography}
-    \beamertemplatearticlebibitems
-  \bibitem{improve-bug-finding-techniques}
-    C. Williams, J. Hollingsworth, {\em Automatic Mining of Source
-      Code Repositories to Improve Bug Finding Techniques}
-  \end{thebibliography}
-
-  \vspace{\stretch{1}}
-
-  \begin{itemize}
-  \item TODO
-  \end{itemize}
-\end{frame}
-
-\note{
-}
-
-\begin{frame}{Predicting Changes}
-  \begin{thebibliography}
-    \beamertemplatearticlebibitems
-  \bibitem{predicting-source-code-changes}
-    A. Ying, G. Murphy et al., {\em Predicting Source Code Changes by
-      Mining Change History}
-  \end{thebibliography}
-
-  \vspace{\stretch{1}}
-
-  \begin{itemize}
-  \item TODO
-  \end{itemize}
-\end{frame}
-
-\note{
-}
-
-\begin{frame}{Traceability Links}
-  \begin{thebibliography}
-    \beamertemplatearticlebibitems
-  \bibitem{traceability-links}
-    H. Kadgi et al., {\em Mining Software Repositories for
-      Traceability Link}
-  \end{thebibliography}
-
-  \vspace{\stretch{1}}
-
-  \begin{itemize}
-  \item TODO
-  \end{itemize}
-\end{frame}
-
-\note{
-}
-
-\begin{frame}{Understanding Software Evolution}
-  \begin{thebibliography}
-    \beamertemplatearticlebibitems
-  \bibitem{software-evolution}
-    Y. Cai, {\em Assessing the Effectiveness of Software
-      Modularization Techniques through the Dynamics of Software
-      Evolution}
-  \end{thebibliography}
-
-  \vspace{\stretch{1}}
-
-  \begin{itemize}
-  \item TODO
-  \end{itemize}
-\end{frame}
-
-\note{
-}
-
 
 \section{Framework}
 
@@ -507,20 +658,25 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item We built a framework for software repository mining
+  \item Explain framework!
+  \end{itemize}
 }
 
 \begin{frame}{Git}
   \begin{itemize}
   \item Free distributed version control system
   \item Initially designed and developed for Linux kernel development
-  \item Every Git working directory is a full-fledged repository:
+  \item Every working directory is a full-fledged repository:
     \begin{itemize}
     \item Complete history
     \item Full revision tracking capabilities
     \item Not dependent on network access or a central server
     \end{itemize}
-  \item Repositories of other version control systems like Subversion
-    can easily be converted into Git repositories
+  \item Easily convert repositories of other version control systems
+    like Subversion into Git repositories can easily be converted into
+    Git repositories
   \item Only need to write mining and analysis tools for one format
     rather than many
   \end{itemize}
@@ -528,6 +684,7 @@
 
 \note{
   \begin{itemize}
+  \item We chose Git as the base of our framework.
   \item Git is a free distributed version control system.
   \item It was initially designed and developed by Linus Torvalds for
     Linux kernel development.
@@ -553,6 +710,8 @@
     \item Set number of modifications
     \item Heuristics for file moves
     \end{itemize}
+  \item Massaged version history database is used to generate frequent
+    item sets and calculate metrics
   \end{itemize}
 
   \vspace{\stretch{1}}
@@ -563,6 +722,19 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item Gitup generates logfile and initializes versions history
+    database.
+  \item Shiatsu massages the data:
+    \begin{itemize}
+    \item It sets modularization according to specified directory depth.
+    \item Shiatsu removes deleted files from the database and set the
+      number of modifications.
+    \item It also uses heuristics for file moves.
+    \end{itemize}
+  \item The massaged version history database is then used to generate
+    frequent item sets and calculate metrics.
+  \end{itemize}
 }
 
 \begin{frame}{Preventing Maintenance}
@@ -570,15 +742,23 @@
   challenges:
 
   \begin{itemize}
-  \item Predicting Faults
-  \item Improve Bug Finding Techniques
-  \item Predicting Changes
-  \item Traceability Links
-  \item Understanding Software Evolution
+  \item Predicting changes
+    \begin{itemize}
+    \item Incomplete changes
+    \item ``Cross-language'' changes
+    \end{itemize}
+  \item Traceability links
+  \item Predicting faults
+  \item Understanding software evolution
+    \begin{itemize}
+    \item Measure change localization
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \note{
+  Our framework can help with solving all mentioned maintenance
+  challenges 
 }
 
 
@@ -608,6 +788,15 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item A change is well localized, if it touches only one or very few
+    modules
+  \item A change is not well localized, if it touches many modules
+  \item Apply change localization for frequent item sets
+  \item Our hypothesis is that changes in frequent item sets in well
+    modularized software systems are localized
+  \item This means that frequent item sets have a high localization
+  \end{itemize}
 }
 
 \begin{frame}[containsverbatim]{Change Localization: Example}
@@ -635,6 +824,13 @@
 \end{frame}
 
 \note{
+  Do the calculation after the next slide!
+
+  \begin{itemize}
+  \item $1 - 0 = 1$
+  \item $1 - \frac{4}{5} = \frac{1}{5}$
+  \item $1 - \frac{3}{3} = 1 - 1 = 0$
+  \end{itemize}
 }
 
 \begin{frame}{Change Localization Metrics}
@@ -648,7 +844,7 @@
 
   \[
   \underline{\sum_{i = \text{FIS}_1}^{\text{FIS}_n} 1 -
-    \left(\text{if}\left( i.\text{modules\_touched} == 1, 0,
+    \left(\text{if}\left( i.\text{modules\_touched} = 1, 0,
         \frac{i.\text{modules\_touched}}{i.\text{files\_touched}}
       \right) \right)}
   \]
@@ -658,6 +854,7 @@
 \end{frame}
 
 \note{
+  Go back to the previous slide to show localization!
 }
 
 
@@ -680,6 +877,13 @@
       \item Repository checked out on November 19, 2009
       \item $25,277$ code files
       \item $168,800$ commits
+      \item Frequent item set mining:
+        \begin{itemize}
+        \item Minimum number of commits (modifications) for code
+          files: $4$
+        \item Minimum support: $4$
+        \item Maximum size of commits (number of code files): $50$
+        \end{itemize}
       \end{itemize}
     \end{column}
     \begin{column}{0.40\textwidth}
@@ -689,6 +893,19 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item Linux is a Unix-like operating system kernel.
+  \item I check out the repository of the mainline on November 19,
+    2009
+  \item It has $25,277$ code files and consists of $168,800$ commits
+  \item Settings used for the frequent item set mining are:
+    \begin{itemize}
+    \item Minimum number of commits (modifications) a code file has to
+      have to be added to the transactions file: $4$
+    \item Minimum support: $4$
+    \item Maximum size of commits (number of code files): $50$
+    \end{itemize}
+  \end{itemize}
 }
 
 \begin{frame}{Linux 2.6: Frequent Item Set Metrics}
@@ -698,6 +915,8 @@
 \end{frame}
 
 \note{
+  Explain how data was gathered: Log between tags (versions) in the
+  repository.
 }
 
 \subsection{Wine}
@@ -711,6 +930,13 @@
       \item Repository checked out on November 20, 2009
       \item $3,479$ code files
       \item $63,864$ commits
+      \item Frequent item set mining:
+        \begin{itemize}
+        \item Minimum number of commits (modifications) for code
+          files: $4$
+        \item Minimum support: $4$
+        \item Maximum size of commits (number of code files): $50$
+        \end{itemize}
       \end{itemize}
     \end{column}
     \begin{column}{0.30\textwidth}
@@ -720,6 +946,14 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item Wine allows execution of Microsoft Windows programs on
+    Unix-like operating systems
+  \item I check out the repository on November 20, 2009
+  \item It has $3,479$ code files and consists of $63,864$ commits
+  \item We use the same settings for the frequent item set mining as
+    with Linux 2.6
+  \end{itemize}
 }
 
 \begin{frame}{Wine: Frequent Item Set Metrics}
@@ -746,6 +980,18 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item We got the following insights by examining Open Source
+    software repositories:
+  \item Code file moves increase localization
+  \item Adding of many code files decrease localization
+  \item Adding of code files can clear effect of moves on localization
+  \item Stable versions contain mostly bug fixes \\
+    this means they have a low localization and only few moves and
+    adds
+  \item Unstable versions contain mostly new features \\
+    this means they have a high localization and many moves and adds
+  \end{itemize}
 }
 
 
@@ -764,6 +1010,17 @@
 \end{frame}
 
 \note{
+  \begin{itemize}
+  \item We want to use our framework to mine software repositories of
+    commercial systems.
+  \item This would allow us to compare localization metrics of Open
+    Source and Closed Source systems.
+  \item Now after we introduced a way to measure change localization,
+    we want to use the frequent item sets extracted from the version
+    history to come up with a better modularization.
+  \item Another goal is to publish the result of our research in the
+    form of a paper.
+  \end{itemize}
 }
 
 \begin{frame}{Summary}
@@ -786,14 +1043,14 @@
 
 \note{
   \begin{itemize}
-  \item Presented mining software repositories for intelligent
-    software maintenance
-  \item Shown applications of frequent item set mining in improving
-    software maintainability
-  \item Implemented framework for preventing software maintenance
-  \item Introduced new metrics for change localization
-  \item Measured and analyzed localization of frequent item sets of
-    Open Source projects
+  \item I presented mining software repositories for intelligent
+    software maintenance.
+  \item And have shown applications of frequent item set mining in
+    improving software maintainability.
+  \item I implemented framework for preventing software maintenance.
+  \item And we Introduced new metrics for change localization.
+  \item We used our framework and metrics to measure and analyze
+    localization of frequent item sets of Open Source projects.
   \end{itemize}
 }
 
