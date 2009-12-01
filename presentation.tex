@@ -492,13 +492,8 @@
   \item The Mozilla Web browser includes a Web content layout engine
     responsible for Web pages. There was a bug that caused the
     consumption of all available memory when a Web page with very
-    large fonts was displayed. As part of a solution for this
-    modification task, a developer added code to limit the font size
-    in the version of Mozilla that uses the gtk UI toolkit, but missed
-    a similar required change in the version that uses the UI toolkit
-    xlib. The comments in the modification task report include the
-    following:
-  \item Comments in modification task report:
+    large fonts was displayed. The comments in the modification task
+    report include the following:
     \begin{itemize}
     \item 2002-06-12 14:14: Patch to gtk/nsFontMetricsGTK.cpp,
       limiting the size of fonts to twice the display height.
@@ -512,8 +507,7 @@
     version and the code in xlib version are used in different
     configurations of Mozilla.
   \item However, an analysis of the change history for Mozilla
-    indicates that these two files were changed 41 times together in
-    the development of Mozilla.
+    indicates that these two files were changed 41 times together.
   \item When we applied our approach to Mozilla, we extracted a change
     pattern. Changing the gtk/nsFontMetricsGTK.cpp could trigger a
     recommendation for the other file.
@@ -675,8 +669,7 @@
     \item Not dependent on network access or a central server
     \end{itemize}
   \item Easily convert repositories of other version control systems
-    like Subversion into Git repositories can easily be converted into
-    Git repositories
+    like Subversion into Git repositories
   \item Only need to write mining and analysis tools for one format
     rather than many
   \end{itemize}
@@ -745,9 +738,11 @@
   \item Predicting changes
     \begin{itemize}
     \item Incomplete changes
-    \item ``Cross-language'' changes
     \end{itemize}
   \item Traceability links
+    \begin{itemize}
+    \item ``Cross-language'' changes
+    \end{itemize}
   \item Predicting faults
   \item Understanding software evolution
     \begin{itemize}
@@ -895,7 +890,7 @@
 \note{
   \begin{itemize}
   \item Linux is a Unix-like operating system kernel.
-  \item I check out the repository of the mainline on November 19,
+  \item I checked out the repository of the mainline on November 19,
     2009
   \item It has $25,277$ code files and consists of $168,800$ commits
   \item Settings used for the frequent item set mining are:
@@ -949,7 +944,7 @@
   \begin{itemize}
   \item Wine allows execution of Microsoft Windows programs on
     Unix-like operating systems
-  \item I check out the repository on November 20, 2009
+  \item I checked out the repository on November 20, 2009
   \item It has $3,479$ code files and consists of $63,864$ commits
   \item We use the same settings for the frequent item set mining as
     with Linux 2.6
