@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat presentation.beamer.tex | rubber-pipe --texpath=styles --pdf > beamer.pdf
+cat presentation.beamer.tex | rubber-pipe -m beamer --texpath=styles --pdf > beamer.pdf
